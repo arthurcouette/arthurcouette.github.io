@@ -217,7 +217,7 @@
         .about-img {
             flex: 1 1 400px;
             height: 400px;
-            background: url('/api/placeholder/500/500') no-repeat center center;
+            background: url('presentation.jpg') no-repeat center center;
             background-size: cover;
             border-radius: 6px;
         }
@@ -314,12 +314,39 @@
         .map {
             flex: 1 1 500px;
             height: 400px;
-            background-color: #eaeaea;
             border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        /* Bouton de retour en haut */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #8e6c88;
+            color: white;
+            border-radius: 50%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: #666;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: #6e5269;
+            transform: translateY(-5px);
         }
         
         /* Footer */
@@ -380,6 +407,32 @@
                     this.style.padding = '15px';
                     this.style.borderRadius = '4px';
                     this.style.pointerEvents = 'none'; // Désactiver les interactions avec le bouton
+                });
+            });
+            
+            // Bouton de retour en haut
+            const scrollTopBtn = document.createElement('a');
+            scrollTopBtn.className = 'scroll-top';
+            scrollTopBtn.innerHTML = '&#8963;'; // Chevron vers le haut
+            scrollTopBtn.style.transform = 'rotate(180deg)'; // Retourner le chevron pour qu'il pointe vers le haut
+            scrollTopBtn.href = '#';
+            document.body.appendChild(scrollTopBtn);
+            
+            // Afficher/masquer le bouton en fonction du défilement
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // Action du bouton
+            scrollTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
         });
@@ -529,7 +582,7 @@
                         <i>📍</i>
                         <div class="contact-text">
                             <h4>Adresse</h4>
-                            <p>15 Rue de la Détente, 75011 Paris, France</p>
+                            <p>Chemin Pellangari, 13600 CEYRESTE</p>
                         </div>
                     </div>
                     
@@ -567,7 +620,7 @@
                 </div>
                 
                 <div class="map">
-                    <p>Carte de localisation - À remplacer par Google Maps</p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.0453913267534!2d5.6916839761503835!3d43.20879887112802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9a59c436bfdc1%3A0x7fb38421a87e9c96!2sChemin%20Pellangari%2C%2013600%20Ceyreste!5e0!3m2!1sfr!2sfr!4v1712084536868!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
