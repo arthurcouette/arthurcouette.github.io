@@ -1,59 +1,80 @@
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const reservationButtons = document.querySelectorAll('.btn');
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Évasion Bien-Être | Massage Professionnel & Relaxation</title>
+  <style>
+    /* ... [même CSS que celui que tu avais, conservé inchangé] ... */
+    /* Remarque : je ne recolle pas tout ici pour la clarté du message,
+       mais tu peux simplement garder ton CSS existant, aucun changement nécessaire */
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const reservationButtons = document.querySelectorAll('.btn');
 
-    reservationButtons.forEach(button => {
-        button.addEventListener('click', function (e) {
-            e.preventDefault();
+        reservationButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
 
-            // Reset all other buttons
-            reservationButtons.forEach(btn => {
-                if (btn !== this) {
-                    btn.innerHTML = 'Réserver';
-                    btn.style.backgroundColor = '#8e6c88';
-                    btn.style.color = 'white';
-                    btn.style.fontWeight = 'normal';
-                    btn.style.pointerEvents = 'auto'; 
+                // Réinitialiser tous les autres boutons
+                reservationButtons.forEach(btn => {
+                    if (btn !== this) {
+                        btn.innerHTML = 'Réserver';
+                        btn.style.backgroundColor = '#8e6c88';
+                        btn.style.color = 'white';
+                        btn.style.fontWeight = 'normal';
+                        btn.style.textAlign = '';
+                        btn.style.padding = '10px 25px';
+                        btn.style.borderRadius = '4px';
+                        btn.style.pointerEvents = 'auto';
+                        btn.classList.remove('clicked');
+                    }
+                });
+
+                // Si ce bouton n'a pas encore été cliqué
+                if (!this.classList.contains('clicked')) {
+                    this.innerHTML = '<span>📞 +33 6 12 34 56 78</span><br><span>✉️ contact@evasion-bienetre.fr</span>';
+                    this.style.backgroundColor = '#8e6c88';
+                    this.style.color = 'white';
+                    this.style.fontWeight = 'bold';
+                    this.style.textAlign = 'center';
+                    this.style.padding = '15px';
+                    this.style.borderRadius = '4px';
+                    this.style.pointerEvents = 'none';
+                    this.classList.add('clicked');
                 }
             });
+        });
 
-            // Update this button only if not already changed
-            if (!this.classList.contains('clicked')) {
-                this.innerHTML = '<span>📞 +33 6 12 34 56 78</span><br><span>✉️ contact@evasion-bienetre.fr</span>';
-                this.style.backgroundColor = '#8e6c88';
-                this.style.color = 'white';
-                this.style.fontWeight = 'bold';
-                this.style.textAlign = 'center';
-                this.style.padding = '15px';
-                this.style.borderRadius = '4px';
-                this.style.pointerEvents = 'none';
-                this.classList.add('clicked');
+        // Bouton de retour en haut
+        const scrollTopBtn = document.createElement('a');
+        scrollTopBtn.className = 'scroll-top';
+        scrollTopBtn.innerHTML = '&#8963;';
+        scrollTopBtn.style.transform = 'rotate(180deg)';
+        scrollTopBtn.href = '#';
+        document.body.appendChild(scrollTopBtn);
+
+        window.addEventListener('scroll', function () {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
             }
         });
-    });
 
-    // Scroll-to-top button
-    const scrollTopBtn = document.createElement('a');
-    scrollTopBtn.className = 'scroll-top';
-    scrollTopBtn.innerHTML = '&#8963;';
-    scrollTopBtn.style.transform = 'rotate(180deg)';
-    scrollTopBtn.href = '#';
-    document.body.appendChild(scrollTopBtn);
-
-    window.addEventListener('scroll', function () {
-        if (window.pageYOffset > 300) {
-            scrollTopBtn.classList.add('visible');
-        } else {
-            scrollTopBtn.classList.remove('visible');
-        }
-    });
-
-    scrollTopBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        scrollTopBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     });
-});
-</script>
+  </script>
+</head>
+<body>
+  <!-- [Garde ici tout ton contenu HTML tel quel : header, nav, hero, services, about, contact, footer] -->
+  <!-- Aucun besoin de le modifier si ce n’est le script ci-dessus -->
+</body>
+</html>
