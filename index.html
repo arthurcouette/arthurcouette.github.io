@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Évasion Bien-Être | Massage Professionnel & Relaxation</title>
+    <title>Système de Réservation - Évasion Bien-Être</title>
     <style>
-        /* Global Styles */
+        /* Styles globaux */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -14,39 +14,39 @@
             color: #333;
             background-color: #f9f8f6;
         }
-        
+
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
-        
-        /* Header */
+
+        /* En-tête */
         header {
             background: linear-gradient(to right, #8e6c88, #d4b8c7);
             color: white;
             padding: 1rem 0;
             text-align: center;
         }
-        
+
         .logo h1 {
             margin: 0;
             font-size: 2.5rem;
             font-weight: 300;
         }
-        
+
         .logo p {
             margin: 0;
             font-size: 1.2rem;
             opacity: 0.9;
         }
-        
+
         /* Navigation */
         nav {
             background-color: #606c76;
             padding: 1rem 0;
         }
-        
+
         nav ul {
             display: flex;
             justify-content: center;
@@ -54,409 +54,361 @@
             margin: 0;
             padding: 0;
         }
-        
+
         nav ul li {
             margin: 0 15px;
         }
-        
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 1.1rem;
             transition: opacity 0.3s;
         }
-        
+
         nav ul li a:hover {
             opacity: 0.8;
         }
-        
-        /* Hero Section */
-        .hero {
-            background: url('/api/placeholder/1100/500') no-repeat center center;
-            background-size: cover;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        /* Système de login */
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .login-header {
             text-align: center;
-            color: white;
-            position: relative;
+            margin-bottom: 30px;
         }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .login-header h2 {
+            color: #6e5269;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            z-index: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
         }
-        
-        .hero-content {
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-        
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
+
+        .login-btn {
             background-color: #8e6c88;
             color: white;
-            padding: 10px 25px;
-            text-decoration: none;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            font-size: 16px;
             border-radius: 4px;
-            font-size: 1.1rem;
+            cursor: pointer;
             transition: background-color 0.3s;
         }
-        
-        .btn:hover {
+
+        .login-btn:hover {
             background-color: #7a5a74;
         }
-        
-        /* Services Section */
-        .services {
-            padding: 4rem 0;
-            background-color: white;
+
+        /* Système de réservation (visible après connexion) */
+        .booking-dashboard {
+            display: none; /* Caché par défaut, affiché après connexion */
         }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: #6e5269;
-            font-weight: 400;
-        }
-        
-        .section-title p {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .service-list {
+
+        .booking-header {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        
-        .service-card {
-            flex: 1 1 300px;
-            max-width: 350px;
-            background-color: #f9f9f9;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .service-content {
-            padding: 20px;
-        }
-        
-        .service-content h3 {
-            margin-top: 0;
-            color: #6e5269;
-            font-weight: 500;
-        }
-        
-        .service-content p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .price {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #8e6c88;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        /* About Section */
-        .about {
-            padding: 4rem 0;
-            background-color: #f5f0f5;
-        }
-        
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
-            gap: 40px;
+            margin-bottom: 30px;
         }
-        
-        .about-img {
-            flex: 1 1 400px;
-            height: 400px;
-            background: url('presentation.jpg') no-repeat center center;
-            background-size: cover;
-            border-radius: 6px;
-        }
-        
-        .about-text {
-            flex: 1 1 500px;
-        }
-        
-        .about-text h2 {
-            color: #6e5269;
-            font-weight: 400;
-            margin-top: 0;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 4rem 0;
-            background-color: white;
-        }
-        
-        .contact-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-        
-        .contact-info {
-            flex: 1 1 400px;
-        }
-        
-        .contact-info h3 {
-            color: #6e5269;
-            font-weight: 500;
-        }
-        
-        .contact-item {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .contact-item i {
-            font-size: 1.2rem;
-            color: #8e6c88;
-            margin-right: 15px;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .contact-text {
-            flex: 1;
-        }
-        
-        .contact-text h4 {
-            margin: 0 0 5px 0;
-            font-weight: 500;
-        }
-        
-        .contact-text p, .contact-text a {
-            margin: 0;
-            color: #666;
-        }
-        
-        .contact-text a {
-            transition: color 0.3s;
-        }
-        
-        .contact-text a:hover {
-            color: #8e6c88;
-        }
-        
-        .social-links {
-            margin-top: 30px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #8e6c88;
+
+        .logout-btn {
+            background-color: #606c76;
             color: white;
-            margin-right: 10px;
-            text-decoration: none;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
             transition: background-color 0.3s;
         }
-        
-        .social-links a:hover {
-            background-color: #6e5269;
+
+        .logout-btn:hover {
+            background-color: #4a545c;
         }
-        
-        .map {
-            flex: 1 1 500px;
-            height: 400px;
-            border-radius: 6px;
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #8e6c88;
+            border-bottom: 3px solid #8e6c88;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Calendrier */
+        .calendar {
+            background-color: white;
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        
-        /* Bouton de retour en haut */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0e6ea;
+            padding: 15px 20px;
+        }
+
+        .calendar-month {
+            font-size: 18px;
+            font-weight: 500;
+            color: #6e5269;
+        }
+
+        .calendar-nav button {
+            background-color: transparent;
+            border: none;
+            font-size: 16px;
+            color: #8e6c88;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .calendar-day:hover {
+            background-color: #f5f0f5;
+        }
+
+        .calendar-day.active {
             background-color: #8e6c88;
             color: white;
+        }
+
+        .calendar-day.has-appointments {
+            position: relative;
+        }
+
+        .calendar-day.has-appointments::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
+            background-color: #8e6c88;
+        }
+
+        /* Liste des réservations */
+        .appointment-list {
+            margin-top: 30px;
+        }
+
+        .appointment-day {
+            margin-bottom: 25px;
+        }
+
+        .appointment-day-header {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #6e5269;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .appointment-item {
+            background-color: white;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            text-decoration: none;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
         }
-        
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
+
+        .appointment-info {
+            flex: 1;
         }
-        
-        .scroll-top:hover {
-            background-color: #6e5269;
-            transform: translateY(-5px);
+
+        .appointment-time {
+            font-weight: 500;
+            color: #8e6c88;
         }
-        
+
+        .appointment-service {
+            color: #666;
+        }
+
+        .appointment-customer {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .appointment-actions button {
+            background-color: #f0e6ea;
+            border: none;
+            color: #6e5269;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-left: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .appointment-actions button:hover {
+            background-color: #e0d6da;
+        }
+
+        /* Formulaire de disponibilités */
+        .availability-form {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .availability-form h3 {
+            margin-top: 0;
+            color: #6e5269;
+            margin-bottom: 15px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .form-field {
+            flex: 1;
+        }
+
+        .form-field label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .time-slots {
+            margin-top: 20px;
+        }
+
+        .time-slot {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+
+        .time-slot:last-child {
+            border-bottom: none;
+        }
+
+        .submit-btn {
+            background-color: #8e6c88;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #7a5a74;
+        }
+
         /* Footer */
         footer {
             background-color: #6e5269;
             color: white;
             padding: 2rem 0;
             text-align: center;
+            margin-top: 50px;
         }
-        
+
         footer p {
             margin: 0;
             opacity: 0.8;
         }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul li {
-                margin: 5px 0;
-            }
-            
-            .hero {
-                height: 300px;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .about-img {
-                height: 300px;
-            }
-        }
     </style>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const reservationButtons = document.querySelectorAll('.btn');
-
-        reservationButtons.forEach(button => {
-            button.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                // Réinitialiser tous les autres boutons
-                reservationButtons.forEach(btn => {
-                    if (btn !== this) {
-                        btn.innerHTML = 'Réserver';
-                        btn.style.backgroundColor = '#8e6c88';
-                        btn.style.color = 'white';
-                        btn.style.fontWeight = 'normal';
-                        btn.style.textAlign = '';
-                        btn.style.padding = '10px 25px';
-                        btn.style.borderRadius = '4px';
-                        btn.style.pointerEvents = 'auto';
-                        btn.classList.remove('clicked');
-                    }
-                });
-
-                // Si ce bouton n'a pas encore été cliqué
-                if (!this.classList.contains('clicked')) {
-                    this.innerHTML = '<span>📞 +33 6 12 34 56 78</span><br><span>✉️ contact@evasion-bienetre.fr</span>';
-                    this.style.backgroundColor = '#8e6c88';
-                    this.style.color = 'white';
-                    this.style.fontWeight = 'bold';
-                    this.style.textAlign = 'center';
-                    this.style.padding = '15px';
-                    this.style.borderRadius = '4px';
-                    this.style.pointerEvents = 'none';
-                    this.classList.add('clicked');
-                }
-            });
-        });
-
-        // Bouton de retour en haut
-        const scrollTopBtn = document.createElement('a');
-        scrollTopBtn.className = 'scroll-top';
-        scrollTopBtn.innerHTML = '&#8963;';
-        scrollTopBtn.style.transform = 'rotate(180deg)';
-        scrollTopBtn.href = '#';
-        document.body.appendChild(scrollTopBtn);
-
-        window.addEventListener('scroll', function () {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
-        });
-
-        scrollTopBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    });
-  </script>
 </head>
 <body>
-    <!-- Header -->
+    <!-- En-tête -->
     <header>
         <div class="container">
             <div class="logo">
                 <h1>Évasion Bien-Être</h1>
-                <p>Massage Professionnel & Relaxation</p>
+                <p>Système de Gestion des Réservations</p>
             </div>
         </div>
     </header>
@@ -465,178 +417,227 @@
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">À Propos</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Retour au Site</a></li>
+                <li><a href="#" id="login-link">Connexion</a></li>
             </ul>
         </div>
     </nav>
     
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h2>Détente, Bien-être, Harmonie</h2>
-            <p>Découvrez le pouvoir transformateur du massage avec nos services personnalisés pour votre bien-être physique et mental.</p>
-            <a href="#contact" class="btn">Réserver Maintenant</a>
-        </div>
-    </section>
-    
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nos Services</h2>
-                <p>Nous proposons une variété de massages thérapeutiques adaptés à vos besoins spécifiques pour une relaxation optimale.</p>
+    <div class="container">
+        <!-- Système de login -->
+        <div class="login-container" id="login-form">
+            <div class="login-header">
+                <h2>Connexion Administrateur</h2>
+                <p>Veuillez vous connecter pour accéder au système de réservation</p>
             </div>
             
-            <div class="service-list">
-                <!-- Service 1 -->
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
-                    <div class="service-content">
-                        <h3>Massage Suédois</h3>
-                        <p>Un massage dynamique qui travaille en profondeur sur les tensions musculaires pour une relaxation complète.</p>
-                        <span class="price">65€ / 60 minutes</span>
-                        <span class="price">95€ / 90 minutes</span>
-                        <a href="#contact" class="btn">Réserver</a>
-                    </div>
+            <form id="admin-login">
+                <div class="form-group">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" required>
                 </div>
                 
-                <!-- Service 2 -->
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
-                    <div class="service-content">
-                        <h3>Massage Californien</h3>
-                        <p>Un massage doux et enveloppant qui favorise la relaxation et l'évacuation du stress quotidien.</p>
-                        <span class="price">70€ / 60 minutes</span>
-                        <span class="price">100€ / 90 minutes</span>
-                        <a href="#contact" class="btn">Réserver</a>
-                    </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" required>
                 </div>
                 
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
-                    <div class="service-content">
-                        <h3>Massage Thaïlandais</h3>
-                        <p>Un massage énergétique traditionnel qui combine pressions et étirements pour libérer les tensions.</p>
-                        <span class="price">75€ / 60 minutes</span>
-                        <span class="price">110€ / 90 minutes</span>
-                        <a href="#contact" class="btn">Réserver</a>
-                    </div>
-                </div>
-                
-                <!-- Service 4 -->
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
-                    <div class="service-content">
-                        <h3>Massage aux Pierres Chaudes</h3>
-                        <p>Des pierres lisses et chauffées sont placées sur des points spécifiques pour aider à détendre les muscles tendus.</p>
-                        <span class="price">85€ / 75 minutes</span>
-                        <a href="#contact" class="btn">Réserver</a>
-                    </div>
-                </div>
-                
-                <!-- Service 5 -->
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
-                    <div class="service-content">
-                        <h3>Réflexologie Plantaire</h3>
-                        <p>Application de pressions sur des points spécifiques des pieds correspondant à différentes parties du corps.</p>
-                        <span class="price">55€ / 45 minutes</span>
-                        <a href="#contact" class="btn">Réserver</a>
-                    </div>
-                </div>
-                
-                <!-- Service 6 -->
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('/api/placeholder/400/200');"></div>
-                    <div class="service-content">
-                        <h3>Massage Spécial Dos</h3>
-                        <p>Un massage ciblé pour soulager les tensions dorsales, idéal pour les personnes travaillant longtemps assises.</p>
-                        <span class="price">60€ / 45 minutes</span>
-                        <span class="price">80€ / 60 minutes</span>
-                        <a href="#contact" class="btn">Réserver</a>
-                    </div>
-                </div>
-            </div>
+                <button type="submit" class="login-btn">Se connecter</button>
+            </form>
         </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-img"></div>
-                <div class="about-text">
-                    <h2>À Propos d'Évasion Bien-Être</h2>
-                    <p>Bienvenue chez Évasion Bien-Être, votre havre de paix dédié au bien-être et à la relaxation. Avec plus de 8 ans d'expérience dans l'art du massage, nous vous offrons un service personnalisé dans un cadre apaisant.</p>
-                    <p>Notre philosophie est centrée sur l'équilibre entre le corps et l'esprit. Chaque massage est adapté à vos besoins spécifiques, que vous cherchiez à soulager des douleurs musculaires, à diminuer votre niveau de stress ou simplement à vous accorder un moment de détente.</p>
-                    <p>Nous utilisons exclusivement des huiles biologiques et des techniques éprouvées pour vous garantir une expérience optimale. Notre espace a été conçu pour créer une atmosphère de tranquillité dès votre arrivée.</p>
-                    <p>Chez Évasion Bien-Être, nous ne nous contentons pas de traiter les symptômes, nous cherchons à favoriser votre bien-être global pour des effets durables sur votre santé physique et mentale.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contactez-Nous</h2>
-                <p>Prêt à vivre une expérience de massage exceptionnelle ? Contactez-nous pour prendre rendez-vous ou pour toute information.</p>
+        
+        <!-- Dashboard de réservation (visible après connexion) -->
+        <div class="booking-dashboard" id="booking-dashboard">
+            <div class="booking-header">
+                <h2>Tableau de bord des réservations</h2>
+                <button class="logout-btn" id="logout-btn">Déconnexion</button>
             </div>
             
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i>📍</i>
-                        <div class="contact-text">
-                            <h4>Adresse</h4>
-                            <p>Chemin Pellangari, 13600 CEYRESTE</p>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="calendar">Calendrier</button>
+                <button class="tab-btn" data-tab="appointments">Réservations</button>
+                <button class="tab-btn" data-tab="availability">Disponibilités</button>
+            </div>
+            
+            <!-- Tab Calendrier -->
+            <div class="tab-content active" id="calendar-tab">
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div class="calendar-nav">
+                            <button id="prev-month">&lt;</button>
+                        </div>
+                        <div class="calendar-month">Avril 2025</div>
+                        <div class="calendar-nav">
+                            <button id="next-month">&gt;</button>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <i>📞</i>
-                        <div class="contact-text">
-                            <h4>Téléphone</h4>
-                            <p>+33 6 12 34 56 78</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i>✉️</i>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <p>contact@evasion-bienetre.fr</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i>🕒</i>
-                        <div class="contact-text">
-                            <h4>Horaires</h4>
-                            <p>Lundi - Vendredi: 10h00 - 20h00</p>
-                            <p>Samedi: 10h00 - 18h00</p>
-                            <p>Dimanche: Fermé</p>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <h4>Suivez-Nous</h4>
-                        <a href="https://www.instagram.com/evasion_bienetre" target="_blank">📸</a>
-                        <a href="https://facebook.com/evasionbienetre" target="_blank">📘</a>
+                    <div class="calendar-grid">
+                        <!-- Jours de la semaine -->
+                        <div class="calendar-day-header">Lun</div>
+                        <div class="calendar-day-header">Mar</div>
+                        <div class="calendar-day-header">Mer</div>
+                        <div class="calendar-day-header">Jeu</div>
+                        <div class="calendar-day-header">Ven</div>
+                        <div class="calendar-day-header">Sam</div>
+                        <div class="calendar-day-header">Dim</div>
+                        
+                        <!-- Jours du mois (exemple) -->
+                        <div class="calendar-day">1</div>
+                        <div class="calendar-day">2</div>
+                        <div class="calendar-day has-appointments active">3</div>
+                        <div class="calendar-day">4</div>
+                        <div class="calendar-day has-appointments">5</div>
+                        <div class="calendar-day">6</div>
+                        <div class="calendar-day">7</div>
+                        <div class="calendar-day">8</div>
+                        <div class="calendar-day has-appointments">9</div>
+                        <div class="calendar-day">10</div>
+                        <!-- et ainsi de suite... -->
                     </div>
                 </div>
                 
-                <div class="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.0453913267534!2d5.6916839761503835!3d43.20879887112802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9a59c436bfdc1%3A0x7fb38421a87e9c96!2sChemin%20Pellangari%2C%2013600%20Ceyreste!5e0!3m2!1sfr!2sfr!4v1712084536868!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="appointment-list">
+                    <div class="appointment-day">
+                        <h3 class="appointment-day-header">Jeudi 3 Avril 2025</h3>
+                        
+                        <div class="appointment-item">
+                            <div class="appointment-info">
+                                <div class="appointment-time">10:00 - 11:00</div>
+                                <div class="appointment-service">Massage Suédois (60 min)</div>
+                                <div class="appointment-customer">Marie Dupont - 06 12 34 56 78</div>
+                            </div>
+                            <div class="appointment-actions">
+                                <button>Modifier</button>
+                                <button>Annuler</button>
+                            </div>
+                        </div>
+                        
+                        <div class="appointment-item">
+                            <div class="appointment-info">
+                                <div class="appointment-time">14:30 - 16:00</div>
+                                <div class="appointment-service">Massage Californien (90 min)</div>
+                                <div class="appointment-customer">Jean Martin - 06 98 76 54 32</div>
+                            </div>
+                            <div class="appointment-actions">
+                                <button>Modifier</button>
+                                <button>Annuler</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Réservations -->
+            <div class="tab-content" id="appointments-tab">
+                <h3>Toutes les réservations</h3>
+                
+                <div class="appointment-day">
+                    <h3 class="appointment-day-header">Jeudi 3 Avril 2025</h3>
+                    
+                    <div class="appointment-item">
+                        <div class="appointment-info">
+                            <div class="appointment-time">10:00 - 11:00</div>
+                            <div class="appointment-service">Massage Suédois (60 min)</div>
+                            <div class="appointment-customer">Marie Dupont - 06 12 34 56 78</div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button>Modifier</button>
+                            <button>Annuler</button>
+                        </div>
+                    </div>
+                    
+                    <div class="appointment-item">
+                        <div class="appointment-info">
+                            <div class="appointment-time">14:30 - 16:00</div>
+                            <div class="appointment-service">Massage Californien (90 min)</div>
+                            <div class="appointment-customer">Jean Martin - 06 98 76 54 32</div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button>Modifier</button>
+                            <button>Annuler</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="appointment-day">
+                    <h3 class="appointment-day-header">Vendredi 5 Avril 2025</h3>
+                    
+                    <div class="appointment-item">
+                        <div class="appointment-info">
+                            <div class="appointment-time">11:30 - 12:15</div>
+                            <div class="appointment-service">Réflexologie Plantaire (45 min)</div>
+                            <div class="appointment-customer">Sophie Leroy - 06 45 67 89 12</div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button>Modifier</button>
+                            <button>Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Disponibilités -->
+            <div class="tab-content" id="availability-tab">
+                <div class="availability-form">
+                    <h3>Définir vos disponibilités</h3>
+                    
+                    <form id="availability-form">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="availability-date">Date</label>
+                                <input type="date" id="availability-date" required>
+                            </div>
+                            
+                            <div class="form-field">
+                                <label for="recurring">Récurrence</label>
+                                <select id="recurring">
+                                    <option value="none">Aucune</option>
+                                    <option value="daily">Quotidienne</option>
+                                    <option value="weekly">Hebdomadaire</option>
+                                    <option value="biweekly">Bi-hebdomadaire</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="start-time">Heure de début</label>
+                                <input type="time" id="start-time" required>
+                            </div>
+                            
+                            <div class="form-field">
+                                <label for="end-time">Heure de fin</label>
+                                <input type="time" id="end-time" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Ajouter cette disponibilité</button>
+                    </form>
+                    
+                    <div class="time-slots">
+                        <h4>Vos plages horaires configurées</h4>
+                        
+                        <div class="time-slot">
+                            <div>
+                                <strong>Lundi - Vendredi</strong>
+                                <div>10:00 - 18:00</div>
+                            </div>
+                            <button>Supprimer</button>
+                        </div>
+                        
+                        <div class="time-slot">
+                            <div>
+                                <strong>Samedi</strong>
+                                <div>10:00 - 14:00</div>
+                            </div>
+                            <button>Supprimer</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     
     <!-- Footer -->
     <footer>
@@ -644,5 +645,73 @@
             <p>&copy; 2025 Évasion Bien-Être. Tous Droits Réservés.</p>
         </div>
     </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Éléments du DOM
+            const loginForm = document.getElementById('login-form');
+            const loginLink = document.getElementById('login-link');
+            const adminLoginForm = document.getElementById('admin-login');
+            const bookingDashboard = document.getElementById('booking-dashboard');
+            const logoutBtn = document.getElementById('logout-btn');
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Login/Logout
+            adminLoginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                // Vérification simple (à remplacer par une authentification sécurisée)
+                if (username === 'admin' && password === 'admin123') {
+                    loginForm.style.display = 'none';
+                    bookingDashboard.style.display = 'block';
+                } else {
+                    alert('Identifiants incorrects. Veuillez réessayer.');
+                }
+            });
+            
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (loginForm.style.display === 'none') {
+                    loginForm.style.display = 'block';
+                    bookingDashboard.style.display = 'none';
+                }
+            });
+            
+            logoutBtn.addEventListener('click', function() {
+                loginForm.style.display = 'block';
+                bookingDashboard.style.display = 'none';
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            });
+            
+            // Gestion des onglets
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Supprime la classe active de tous les boutons et contenus
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Ajoute la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    // Affiche le contenu correspondant
+                    const tabId = this.getAttribute('data-tab') + '-tab';
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Fonction pour changer de mois (fictive pour la démo)
+            document.getElementById('prev-month').addEventListener('click', function() {
+                document.querySelector('.calendar-month').textContent = 'Mars 2025';
+            });
+            
+            document.getElementById('next-month').addEventListener('click', function() {
+                document.querySelector('.calendar-month').textContent = 'Mai 2025';
+            });
+        });
+    </script>
 </body>
 </html>
